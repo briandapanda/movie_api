@@ -28,3 +28,6 @@ Timestamp: Tue Apr 18 2023 15:41:37 GMT-0600 (Mountain Daylight Time)
 URL: /favicon.ico
 Timestamp: Tue Apr 18 2023 15:41:37 GMT-0600 (Mountain Daylight Time)
 
+::1 - - [25/Apr/2023:16:20:27 +0000] "GET / HTTP/1.1" 200 17 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [25/Apr/2023:16:20:27 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::1 - - [25/Apr/2023:16:20:55 +0000] "GET /movies HTTP/1.1" 200 683 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
