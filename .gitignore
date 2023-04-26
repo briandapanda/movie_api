@@ -1,3 +1,4 @@
 node_modules/
 # ignore mac system files
 .DS_store
+log.txt 
