@@ -34,8 +34,8 @@ let movies = [
         "Description": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
         "Year": 1999,
         "Genre": {
-            "Name": ["Sci-Fi", "Action"],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. The sci-fi genre builds worlds and alternate realities filled with imagined elements that don’t exist in the real world."
+            "Name": "Sci-Fi",
+            "Description": "The sci-fi genre builds worlds and alternate realities filled with imagined elements that don\'t exist in the real world."
         },
         "Director": {
             "Name": "The Wachowski\'s",
@@ -48,8 +48,8 @@ let movies = [
         "Description": "An F.B.I. Agent goes undercover to catch a gang of surfers who may be bank robbers.",
         "Year": 1991,
         "Genre": {
-            "Name": ["Action", "Crime", "Thriller",],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. Thrillers expertly blend mystery, tension, and anticipation into one exciting story. The crime genre is largely classified by a story that is centered around the solving of a crime.",
+            "Name": "Action",
+            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots.",
         },
         "Director": {
             "Name": "Kathryn Bigelow",
@@ -62,8 +62,8 @@ let movies = [
         "Description": "A young police officer must prevent a bomb exploding aboard a city bus by keeping its speed above 50 mph.",
         "Year": 1994,
         "Genre": {
-            "Name": ["Action", "Adventure", "Thriller"],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. ilms in the adventure genre usually contain the same basic genre elements as an action movie, with the setting as the critical difference. Adventure movies are typically set in an exotic, far away, or unfamiliar locale. Thrillers expertly blend mystery, tension, and anticipation into one exciting story.",
+            "Name": "Action",
+            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots.",
         },
         "Director": {
             "Name": "Jan de Bont",
@@ -76,8 +76,8 @@ let movies = [
         "Description": "A lonely doctor who once occupied an unusual lakeside house begins to exchange love letters with its former resident, a frustrated architect. They must try to unravel the mystery behind their extraordinary romance before it's too late.",
         "Year": 2006,
         "Genre": {
-            "Name": ["Drama", "Fantasy", "Romance"],
-            "Description": "The drama genre features stories with high stakes and many conflicts. They\’re plot-driven and demand that every character and scene move the story forward. Films in the fantasy genre feature magical and supernatural elements that do not exist in the real world. Romance films are love stories. They center around two protagonists exploring some of the elements of love like relationships, sacrifice, marriage, obsession, or destruction.",
+            "Name": "Drama",
+            "Description": "The drama genre features stories with high stakes and many conflicts. They\’re plot-driven and demand that every character and scene move the story forward.",
         },
         "Director": {
             "Name": "Alejandro Agresti",
@@ -90,8 +90,8 @@ let movies = [
         "Description": "An ex-hit-man comes out of retirement to track down the gangsters that killed his dog and took his car.",
         "Year": 2014,
         "Genre": {
-            "Name": ["Action", "Crime", "Thriller"],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. Thrillers expertly blend mystery, tension, and anticipation into one exciting story. The crime genre is largely classified by a story that is centered around the solving of a crime.",
+            "Name": "Action",
+            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots.",
         },
         "Director": {
             "Name": "Chad Stahelski",
@@ -104,8 +104,8 @@ let movies = [
         "Description": "John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
         "Year": 2023,
         "Genre": {
-            "Name": ["Action", "Crime", "Thriller"],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. Thrillers expertly blend mystery, tension, and anticipation into one exciting story. The crime genre is largely classified by a story that is centered around the solving of a crime.",
+            "Name": "Action",
+            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots.",
         },
         "Director": {
             "Name": "Chad Stahelski",
@@ -118,8 +118,8 @@ let movies = [
         "Description": "John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.",
         "Year": 2019,
         "Genre": {
-            "Name": ["Action", "Crime", "Thriller"],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. Thrillers expertly blend mystery, tension, and anticipation into one exciting story. The crime genre is largely classified by a story that is centered around the solving of a crime.",
+            "Name": "Action",
+            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots.",
         },
         "Director": {
             "Name": "Chad Stahelski",
@@ -132,8 +132,8 @@ let movies = [
         "Description": "Supernatural exorcist and demonologist John Constantine helps a policewoman prove her sister\'s death was not a suicide, but something more.",
         "Year": 2005,
         "Genre": {
-            "Name": ["Action", "Fantasy", "Horror"],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. Films in the fantasy genre feature magical and supernatural elements that do not exist in the real world. Horror films feature elements that leave people with an overwhelming sense of fear and dread. Horror movies often include serial killers or monsters as persistent, evil antagonists to play on viewers\’ fears or nightmares.",
+            "Name": "Action",
+            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots.",
         },
         "Director": {
             "Name": "Francis Lawrence",
@@ -147,7 +147,7 @@ let movies = [
         "Year": 2000,
         "Genre": {
             "Name": "Sport",
-            "Description": "Movies in the sports genre will center around a team, individual player, or fan, with the sport itself to motivate the plot and keep the story advancing. Comedy films are funny and entertaining. The films in this genre center around a comedic premise—usually putting someone in a challenging, amusing, or humorous situation they\’re not prepared to handle. ",
+            "Description": "Movies in the sports genre will center around a team, individual player, or fan, with the sport itself to motivate the plot and keep the story advancing.",
         },
         "Director": {
             "Name": "Howard Deutch",
@@ -160,8 +160,8 @@ let movies = [
         "Description": "Freedom fighters Neo, Trinity and Morpheus continue to lead the revolt against the Machine Army, unleashing their arsenal of extraordinary skills and weaponry against the systematic forces of repression and exploitation.",
         "Year": 2003,
         "Genre": {
-            "Name": ["Sci-Fi", "Action"],
-            "Description": "Movies in the action genre are fast-paced and include a lot of action like fight scenes, chase scenes, and slow-motion shots. The sci-fi genre builds worlds and alternate realities filled with imagined elements that don’t exist in the real world."
+            "Name": "Sci-Fi",
+            "Description": "The sci-fi genre builds worlds and alternate realities filled with imagined elements that don\'t exist in the real world."
         },
         "Director": {
             "Name": "The Wachowski\'s",
