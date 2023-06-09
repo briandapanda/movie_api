@@ -18,6 +18,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let auth = require('./auth')(app); 
+const passport = require('passport');
+require('./passport'); 
+
 //Log URL request data to log.txt text file
 const accessLogStream = require('fs').createWriteStream(path.join(__dirname, 'log.txt'), { flags: 'a' });
 app.use(morgan('combined', { stream: accessLogStream }));
@@ -214,8 +218,37 @@ app.get('/users', (req, res) => {
         }); 
 });
 
+//READ: Return info on genre only
+app.get('/genres/:Name', (req, res) => {
+    Movies.findOne({ 'Genre.Name': req.params.Genre})
+    .then((movie) => {
+        if(!movie) {
+            return res.status(404).send('Error: No genre found.');
+        } else {
+            res.status(200).json(movie.Genre);
+        }
+    })
+    .catch((err) => {
+        console.error(err); 
+        res.status(500).send('Error: ' + err);
+    });
+});
 
-
+//READ: Return info on director bio
+app.get('/directors/:Bio', (req, res) => {
+    Movies.findOne({'Director.Name': req.params.Director})
+    .then((movie) => {
+        if(!movie) {
+            return res.status(404).send('Error: No director found.');
+        } else {
+            res.status(200).json(movie.Director);
+        }
+    })
+    .catch((err) => {
+        console.error(err); 
+        res.status(500).send('Error: ' + err);
+    });
+});
 
 //error-handling middleware
 app.use((err, req, res, next) => {
