@@ -36,11 +36,11 @@ app.get('/', (req, res) => {
 });
 
 // CREATE: new user with updated mongoose 
-app.post('/users', (req, res) => {
+app.post('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
-                return res.status(400).send(req.body.Username + 'already exists');
+                return res.status(400).send(req.body.Username + ' already exists');
             } else {
                 Users.create({
                     Username: req.body.Username,
@@ -65,7 +65,7 @@ app.post('/users', (req, res) => {
 });
 
 //UPDATE: User information
-app.put('/users/:Username', (req, res) => {
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate(
         { Username: req.params.Username },
         {
@@ -92,7 +92,7 @@ app.put('/users/:Username', (req, res) => {
 });
 
 //POST:  favorite movie
-app.post('/users/:Username/movies/:MovieID', (req, res) => {
+app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate(
         { Username: req.params.Username },
         {
@@ -114,7 +114,7 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 });
 
 //DELETE: favorite movie from list 
-app.delete('/users/:Username/movies/:movieTitle', (req, res) => {
+app.delete('/users/:Username/movies/:movieTitle', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate(
         { Username: req.params.Username },
         {
@@ -132,13 +132,13 @@ app.delete('/users/:Username/movies/:movieTitle', (req, res) => {
 });
 
 //DELETE:  Delete user by username
-app.delete('/users/:Username', (req, res) => {
+app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndRemove({ Username: req.params.Username })
         .then((user) => {
             if (!user) {
                 res.status(404).send('User ' + req.params.Username + ' was not found');
             } else {
-                res.status(200).send(req.params.Username + 'was deleted.');
+                res.status(200).send(req.params.Username + ' was deleted.');
             }
         })
         .catch((err) => {
@@ -148,7 +148,7 @@ app.delete('/users/:Username', (req, res) => {
 });
 
 //READ: GET all movies
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
         .then((movies) => {
             res.status(200).json(movies);
@@ -160,7 +160,7 @@ app.get('/movies', (req, res) => {
 });
 
 //READ: GET info on single movie by title
-app.get('/movies/title/:Title', (req, res) => {
+app.get('/movies/title/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ Title: req.params.Title })
         .then((movie) => {
             if (!movie) {
@@ -175,7 +175,7 @@ app.get('/movies/title/:Title', (req, res) => {
 });
 
 //READ: Return genre info by movie title 
-app.get('/movies/genre/:Genre', (req, res) => {
+app.get('/movies/genre/:Genre', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find({ 'Genre.Name': req.params.Genre })
         .then((movies) => {
             if (movies.length == 0) {
@@ -191,7 +191,7 @@ app.get('/movies/genre/:Genre', (req, res) => {
 });
 
 //READ: Return info on director by name
-app.get('/movies/directors/:Director', (req, res) => {
+app.get('/movies/directors/:Director', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find({ 'Director.Name': req.params.Director })
         .then((movies) => {
             if (movies.length == 0) {
@@ -207,7 +207,7 @@ app.get('/movies/directors/:Director', (req, res) => {
 });
 
 //READ: Get all users
-app.get('/users', (req, res) => {
+app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.find()
         .then((users) => {
             res.status(200).json(users);
@@ -219,7 +219,7 @@ app.get('/users', (req, res) => {
 });
 
 //READ: Return info on genre only
-app.get('/genres/:Name', (req, res) => {
+app.get('/genres/:Name', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.Genre})
     .then((movie) => {
         if(!movie) {
@@ -235,7 +235,7 @@ app.get('/genres/:Name', (req, res) => {
 });
 
 //READ: Return info on director bio
-app.get('/directors/:Bio', (req, res) => {
+app.get('/directors/:Bio',passport.authenticate('jwt', { session: false }),(req, res) => {
     Movies.findOne({'Director.Name': req.params.Director})
     .then((movie) => {
         if(!movie) {
