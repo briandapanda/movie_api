@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 });
 
 // CREATE: new user with updated mongoose 
-app.post('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.post('/users', (req, res) => {
     Users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
@@ -114,7 +114,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 });
 
 //DELETE: favorite movie from list 
-app.delete('/users/:Username/movies/:movieTitle', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate(
         { Username: req.params.Username },
         {
@@ -176,12 +176,12 @@ app.get('/movies/title/:Title', passport.authenticate('jwt', { session: false })
 
 //READ: Return genre info by movie title 
 app.get('/movies/genre/:Genre', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Movies.find({ 'Genre.Name': req.params.Genre })
-        .then((movies) => {
-            if (movies.length == 0) {
+    Movies.findOne({ 'Genre.Name': req.params.Genre })
+        .then((movie) => {
+            if (!movie) {
                 return res.status(404).send('Error: no movies found with the ' + req.params.Genre + ' genre type. ');
             } else {
-                res.status(200).json(movies);
+                res.status(200).json(movie.Genre);
             }
         })
         .catch((err) => {
@@ -192,12 +192,12 @@ app.get('/movies/genre/:Genre', passport.authenticate('jwt', { session: false })
 
 //READ: Return info on director by name
 app.get('/movies/directors/:Director', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Movies.find({ 'Director.Name': req.params.Director })
-        .then((movies) => {
-            if (movies.length == 0) {
+    Movies.findOne({ 'Director.Name': req.params.Director })
+        .then((movie) => {
+            if (!movie) {
                 return res.status(404).send('Error: no movies found with that director ' + req.params.Director + ' name');
             } else {
-                res.status(200).json(movies);
+                res.status(200).json(movie.Director);
             }
         })
         .catch((err) => {
@@ -207,7 +207,7 @@ app.get('/movies/directors/:Director', passport.authenticate('jwt', { session: f
 });
 
 //READ: Get all users
-app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/users', (req, res) => {
     Users.find()
         .then((users) => {
             res.status(200).json(users);
