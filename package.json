@@ -1,14 +1,14 @@
 {
   "name": "careerfoundry",
   "version": "1.0.0",
-  "description": "",
+  "description": "REST API for a movie web application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["web development", "API", "authentication"],
+  "author": "Brianda Esquivel",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
