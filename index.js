@@ -7,16 +7,16 @@ const express = require('express'),
 const { rmSync } = require('fs');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-const { check, validationResult } = require('express-validator'); 
+const { check, validationResult } = require('express-validator');
 
 const Movies = Models.Movie;
 const Users = Models.User;
 
 //mongoose.connect('mongodb://localhost:27017/movieDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect('process.env.CONNECTION_URI', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const app = express(); 
+const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,13 +30,13 @@ app.use(cors({
             let message = 'The CORS policy for this application does not allow access from origin ' + origin;
             return callback(new Error(message), false);
         }
-        return callback(null, true); 
+        return callback(null, true);
     }
 }));
 
-let auth = require('./auth')(app); 
+let auth = require('./auth')(app);
 const passport = require('passport');
-require('./passport'); 
+require('./passport');
 
 //Log URL request data to log.txt text file
 const accessLogStream = require('fs').createWriteStream(path.join(__dirname, 'log.txt'), { flags: 'a' });
@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
     res.send('Keanu says hello!')
 });
 
-// CREATE: new user with updated mongoose 
+// CREATE: new user with updated mongoose
 app.post('/users',
     [
         check('Username', 'Username is required').isLength({ min: 5 }),
@@ -59,7 +59,7 @@ app.post('/users',
         check('Password', 'Password is required').not().isEmpty(),
         check('Email', 'Email does not appear to be valid').isEmail()
     ], (req, res) => {
-        //check validation object for errors 
+        //check validation object for errors
         let errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -85,7 +85,7 @@ app.post('/users',
                             console.error(error);
                             res.status(500).send('Error: ' + error);
                         });
-            
+
                 }
             })
             .catch((error) => {
@@ -143,7 +143,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
         });
 });
 
-//DELETE: favorite movie from list 
+//DELETE: favorite movie from list
 app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
     Users.findOneAndUpdate(
         { Username: req.params.Username },
@@ -204,7 +204,7 @@ app.get('/movies/title/:Title', passport.authenticate('jwt', { session: false })
         });
 });
 
-//READ: Return genre info by movie title 
+//READ: Return genre info by movie title
 app.get('/movies/genre/:Genre', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.Genre })
         .then((movie) => {
@@ -245,7 +245,7 @@ app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) =
         .catch((err) => {
             console.error(err);
             res.status(500).send('Error: ' + err);
-        }); 
+        });
 });
 
 //READ: Return info on genre only
@@ -259,7 +259,7 @@ app.get('/genres/:Name', passport.authenticate('jwt', { session: false }), (req,
         }
     })
     .catch((err) => {
-        console.error(err); 
+        console.error(err);
         res.status(500).send('Error: ' + err);
     });
 });
@@ -275,7 +275,7 @@ app.get('/directors/:Bio',passport.authenticate('jwt', { session: false }),(req,
         }
     })
     .catch((err) => {
-        console.error(err); 
+        console.error(err);
         res.status(500).send('Error: ' + err);
     });
 });
@@ -283,12 +283,11 @@ app.get('/directors/:Bio',passport.authenticate('jwt', { session: false }),(req,
 //error-handling middleware
 app.use((err, req, res, next) => {
     console.log(err);
-    console.error(err.stack);   
-}); 
+    console.error(err.stack);
+});
 
 //Start server
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
     console.log('Listening on Port ' + port);
 });
-
